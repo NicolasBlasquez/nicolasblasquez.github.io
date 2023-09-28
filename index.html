@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicolas Blasquez</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap');
+
+        ::-webkit-scrollbar {
+            background-color: var(--primary);
+            width: 0.8vw;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--ternary);
+            border-radius: 1rem;
+        }
+
+        * {
+            text-decoration: none;
+            list-style: none;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1E1E28;
+            --secondary: #20202A;
+            --ternary: #2B2B35;
+            --bright: #3c3c51;
+            --font: #C9CAD0;
+            --color1: #3eb74e;
+        }
+
+        /* General settings */
+
+        span {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: flex-start;
+            gap: 1rem;
+
+            background-color: var(--primary);
+            font-family: Roboto;
+            color: var(--font);
+            margin: 0.9rem;
+        }
+
+        aside {
+            flex: 1;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-width: 13rem;
+            border-radius: 0.5rem;
+            border: solid var(--bright) 1px;
+
+            background-color: var(--secondary);
+
+        }
+
+        .info {
+            overflow-y: auto;
+        }
+
+        .info>div:nth-child(1) {
+            background-color: var(--ternary);
+            padding: 1.5rem;
+            border-radius: 0.5rem 0.5rem 0 0;
+            display: flex;
+            gap: 0.4rem;
+            flex-direction: column;
+            align-items: center;
+
+            background-image: radial-gradient(circle, var(--bright) 1px, rgba(0, 0, 0, 0) 1px);
+            background-size: 0.83rem 0.83rem;
+
+        }
+
+        .info>div:nth-child(1) div {
+            display: flex;
+            gap: 0.4rem;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .info>div:nth-child(1) .profile {
+            width: 50%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            margin-bottom: 0.8rem;
+            background-image: url("Assets/Pictures/profile.jpg");
+            background-size: contain;
+        }
+
+        .info>div:nth-child(1) .profile::after {
+            content: "";
+            width: 1rem;
+            box-shadow: var(--color1) 0 0 0.3rem;
+            animation: blink 2s infinite;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            position: relative;
+            bottom: -80%;
+            right: -35%;
+            background-color: var(--color1);
+        }
+
+        .info>div:nth-child(2) {
+            padding: 1.8rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+
+            border-width: 0 0 2px 0;
+            border-style: solid;
+            border-image: linear-gradient(to right, #0000 9%, var(--ternary) 10%, var(--ternary) 90%, #0000 91%) 1;
+
+        }
+
+        .info>div:nth-child(2) span {
+            display: flex;
+            font-size: 0.8rem;
+            justify-content: space-between;
+        }
+
+        .knowledge {
+            padding: 1.8rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .knowledge>div {
+
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+        }
+
+        .knowledge>div>span {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .knowledge>div>div {
+            height: 0.5rem;
+            display: flex;
+            border-radius: 5rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+
+        .knowledge>div>div div {
+            filter: brightness(0.8);
+            border-radius: 5rem;
+            background-color: var(--color1);
+        }
+
+        .socialMedia {
+
+            margin-top: auto;
+            padding: 1.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 0.6rem;
+
+            background-color: var(--secondary);
+            background-image: radial-gradient(circle, var(--bright) 1px, rgba(0, 0, 0, 0) 1px);
+            background-size: 1rem 1rem;
+            border-radius: 0 0 0.5rem 0.5rem;
+
+        }
+
+        .socialMedia img {
+            width: 1.2rem;
+        }
+
+        .socialMedia img:hover {
+            filter: brightness(0.85);
+        }
+
+        main {
+            position: relative;
+            flex: 4;
+
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+            align-items: flex-start;
+            gap: 1rem;
+
+            min-width: 13rem;
+        }
+
+        main>* {
+            border-radius: 0.5rem;
+        }
+
+        header {
+            gap: 1rem;
+            min-height: 8rem;
+
+            display: flex;
+            grid-column: 1 / -1;
+        }
+
+        header>div {
+
+            display: flex;
+            position: relative;
+            padding: 1.3rem;
+            align-items: center;
+            width: 100%;
+
+        }
+
+        header>div h1 {
+            font-family: Montserrat;
+            font-size: 2.4rem;
+            margin: 0 0 0.8rem 0;
+        }
+
+        header>div a {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+            color: var(--font);
+            border: var(--font) solid 1px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0.5rem;
+        }
+
+        header>div::before {
+            background-image: url("Assets/Pictures/forest.png");
+        }
+
+        .search {
+            display: flex;
+            flex-direction: column;
+            grid-column: 1 / -1;
+            gap: 1rem;
+            transition: ease-in-out 0.2s;
+
+        }
+
+        .search>div:nth-child(1) {
+            z-index: 20;
+
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            background-color: var(--primary);
+            margin-bottom: 0rem;
+            gap: 1rem;
+        }
+
+        .search>div input[type="text"] {
+            display: block;
+            background-color: var(--primary);
+            font-size: 0.9rem;
+            border-radius: 0.4rem;
+            border: solid var(--bright) 1px;
+            color: var(--font);
+            padding: 0.5rem;
+            width: 100%;
+            transition: ease-in-out 0.2s;
+
+        }
+
+        .search>div input[type="text"]:focus {
+            border: solid var(--font) 1px;
+            animation: fancyClick ease-in-out 1 0.2s;
+        }
+
+        .search>div input[type="text"]::placeholder {
+            color: var(--bright);
+        }
+
+        .search>div label[for="searchBar"] {
+            min-width: 12rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .search>div label[for="searchBar"]::after {
+            content: "";
+            margin-left: -1.8rem;
+            width: 1rem;
+            height: 1rem;
+            display: block;
+            background-image: url("Assets/Icons/search.svg");
+        }
+
+        .search>div label[for="filters"] {
+            cursor: pointer;
+            display: flex;
+            gap: 0.2rem;
+            transition: ease-in-out 0.2s;
+            font-size: 0.9rem;
+            border-radius: 0.4rem;
+            border: solid var(--bright) 1px;
+            color: var(--bright);
+            padding: 0.5rem;
+
+            user-select: none;
+        }
+
+        .search>div label[for="filters"]::after {
+            content: "";
+            width: 1rem;
+            height: 1rem;
+            display: block;
+            background-image: url("Assets/Icons/filter.svg");
+        }
+
+        .search:has(input[type="text"]:focus) label[for="searchBar"]::after {
+            animation: fancyRotation cubic-bezier(0.175, 0.885, 0.32, 1.275) 1 0.6s;
+            filter: brightness(4);
+        }
+
+        #filters {
+            display: none;
+        }
+
+        #filters+.filters {
+            opacity: 0;
+            max-height: 0rem;
+            z-index: -10;
+            top: -100%;
+        }
+
+        #filters:checked+.filters {
+            opacity: 1;
+            z-index: 0;
+            max-height: 10rem;
+            top: 0;
+        }
+
+        .filters {
+            position: relative;
+
+            display: grid !important;
+            grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+            gap: 1rem;
+
+            transition: ease-in-out 0.2s;
+
+            color: var(--bright);
+            user-select: none;
+        }
+
+        .filters div {
+            display: flex;
+            justify-content: space-around;
+            gap: 1rem;
+            padding: 0.5rem;
+
+            border-radius: 0.4rem;
+            border: solid var(--bright) 1px;
+        }
+
+        .filters div label {
+            cursor: pointer;
+            transition: ease-in-out 0.2s;
+
+            gap: 0.2rem;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .filters div label input {
+            display: none;
+        }
+
+        .filters div label:has(input:checked) {
+            color: var(--font);
+        }
+
+        .search:not(:has(#filters:checked)) {
+            gap: 0rem;
+        }
+
+        main article {
+
+            position: relative;
+
+            background-size: cover;
+            background-position: center;
+
+            border: solid var(--bright) 1px;
+            padding: 0 1rem;
+            border-radius: 0.5rem;
+
+            display: flex;
+            gap: 5rem;
+            flex-direction: column;
+        }
+
+        main article h1 {
+            margin-bottom: 0;
+            font-size: 1.8rem;
+        }
+
+        .actions {
+            margin-top: auto;
+            padding: 1rem 0.4rem 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .actions a:nth-child(1) {
+            color: var(--font);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: solid var(--font) 1px;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .actions a.github {
+            height: 1.5rem;
+        }
+
+        .actions img {
+            height: 100%;
+        }
+
+        main:has(#filters:checked) label[for="filters"] {
+            filter: brightness(4);
+        }
+
+        main:has(#filters:checked) label[for="filters"] {
+            animation: fancyClick ease-in-out 1 0.2s;
+        }
+
+        .background::before,
+        .proyectArticle::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            border-radius: 0.5rem;
+            background-size: cover;
+            filter: brightness(0.8);
+            opacity: 0.25;
+        }
+
+        @keyframes fancyClick {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(0.98);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fancyRotation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.9;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <aside>
+        <div class="info">
+            <div>
+                <div src="Assets/Pictures/profile.jpg" class="profile"></div>
+                <div>
+                    <span>Full-Stack Developer</span>
+                    <span>UI / UX Designer</span>
+                </div>
+            </div>
+            <div>
+                <span><b>Nationality:</b> Argentinian</span>
+                <span><b>Age:</b> 16</span>
+            </div>
+            <div class="knowledge">
+                <div>
+                    <span><b>HTML</b><span title="Senior">SR</span></span>
+                    <div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div>
+                    <span><b>CSS</b><span title="Semi-Senior">SSR</span></span>
+                    <div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div>
+                    <span><b>JS</b><span title="Semi-Senior">SSR</span></span>
+                    <div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div>
+                    <span><b>PHP</b><span title="Junior">JR</span></span>
+                    <div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="socialMedia">
+            <a href="https://github.com/NicolasBlasquez" target="_blank">
+                <img src="Assets/Icons/github.svg">
+            </a>
+            <a href="https://stackoverflow.com/users/16148585/nick" target="_blank">
+                <img src="Assets/Icons/stackoverflow.svg">
+            </a>
+            <a href="https://twitter.com/NicolasBla5quez" target="_blank">
+                <img src="Assets/Icons/twitter.svg">
+            </a>
+            <a href="https://discordapp.com/users/nickx3" target="_blank">
+                <img src="Assets/Icons/discord.svg">
+            </a>
+        </div>
+    </aside>
+    <main>
+        <header>
+            <div class="background">
+                <h1>Discover my proyects!</h1>
+            </div>
+        </header>
+        <div class="search">
+            <div>
+                <label for="searchBar"><input type="text" class="searchBar" id="searchBar" placeholder="Search"></label>
+                <label for="filters">Filters</label>
+            </div>
+
+            <input type="checkbox" id="filters">
+            <div class="filters">
+                <div>
+                    <label for="entertainment">Entertainment<input type="radio" class="class" id="entertainment"
+                            name="type"></label>
+                    <label for="other">Other<input type="radio" class="class" id="other" name="type"></label>
+                </div>
+                <div>
+                    <label for="finished">Finished<input type="radio" class="class" id="finished"
+                            name="progress"></label>
+                    <label for="unfinished">Unfinished<input type="radio" class="class" id="unfinished"
+                            name="progress"></label>
+                </div>
+            </div>
+        </div>
+        <script>
+
+            "use strict"
+
+            const CONTAINER = document.querySelector("main");
+            let i = 0;
+
+            function ArticleWebComponent({ classes = ["other"], title = "Example", link1 = "", link2 = "", image }) {
+
+                let articleElement = Object.assign(document.createElement("article"), { classList: `article${i} proyectArticle ` + classes.join(" "), innerHTML: `<h1 class='title'>${title}</h1><div class='actions'><a href=${link1}>Read More</a><a href=${link2} class='github'><img src='Assets/Icons/github.svg'></a></div><style>.article${i}::before {background-image: url('${image}');}</style>` });
+                CONTAINER.appendChild(articleElement);
+                i++;
+            }
+
+            ArticleWebComponent({ classes: ["other", "finished"], title: "About Me QR", link1: "https://nicolasblasquez.github.io/AboutMeQR/><img src='Assets/Icons/QR.svg'", link2: "https://github.com/NicolasBlasquez/AboutMeQR/tree/gh-pages", image: "Assets/Pictures/aboutMeQR.png" });
+            ArticleWebComponent({ classes: ["entertainment", "progress"], title: "PBT Servers", link1: "https://nicolasblasquez.github.io/AboutMeQR/><img src='Assets/Icons/QR.svg'", link2: "https://github.com/NicolasBlasquez/AboutMeQR/tree/gh-pages", image: "Assets/Pictures/aboutMeQR.png" });
+
+            const SEARCH_BAR = document.querySelector(".searchBar");
+            const ARTICLES = document.querySelectorAll(".proyectArticle");
+            const TEXTS = document.querySelectorAll(".title");
+
+            const FILTER_BUTTON = document.querySelector("#filters");
+            const FILTERS = document.querySelectorAll(".class");
+
+            function search() {
+
+                let regex = new RegExp(`${SEARCH_BAR.value}`, "ig");
+                var activatedClasses = [];
+
+                if (FILTER_BUTTON.checked) {
+                    FILTERS.forEach(element => {
+                        element.checked ? activatedClasses = [...activatedClasses, element.id] : "";
+                    });
+                }
+
+                for (let i = 0; i < TEXTS.length; i++) {
+                    if (TEXTS[i].innerHTML.match(regex) && ARTICLES[i].className.match(new RegExp(`${activatedClasses.join(" ")}`, "ig"))) ARTICLES[i].style.display = "flex";
+                    else ARTICLES[i].style.display = "none";
+                }
+
+            }
+
+            [...FILTERS, FILTER_BUTTON, SEARCH_BAR].forEach(interactable => {
+                interactable.addEventListener("input", search);
+            });
+
+            FILTER_BUTTON.addEventListener("input", () => {
+                FILTERS.forEach(e => { e.checked = false; });
+            })
+
+        </script>
+    </main>
+</body>
+
+</html>
