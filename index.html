@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Assets/Icons/suitcase.svg" type="image/x-icon">
     <title>Nicolas Blasquez</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap');
@@ -357,9 +358,8 @@
 
         .filters {
             position: relative;
-
-            display: grid !important;
-            grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+            display: flex;
+            flex-flow: row wrap;
             gap: 1rem;
 
             transition: ease-in-out 0.2s;
@@ -371,9 +371,8 @@
         .filters div {
             display: flex;
             justify-content: space-around;
-            gap: 1rem;
+            gap: 0.5rem;
             padding: 0.5rem;
-
             border-radius: 0.4rem;
             border: solid var(--bright) 1px;
         }
@@ -381,8 +380,6 @@
         .filters div label {
             cursor: pointer;
             transition: ease-in-out 0.2s;
-
-            gap: 0.2rem;
             font-size: 0.8rem;
             display: flex;
             align-items: center;
@@ -587,12 +584,12 @@
             <div class="filters">
                 <div>
                     <label for="entertainment">Entertainment<input type="radio" class="class" id="entertainment"
-                            name="type"></label>
+                            name="type"></label>•
                     <label for="other">Other<input type="radio" class="class" id="other" name="type"></label>
                 </div>
                 <div>
                     <label for="finished">Finished<input type="radio" class="class" id="finished"
-                            name="progress"></label>
+                            name="progress"></label>•
                     <label for="unfinished">Unfinished<input type="radio" class="class" id="unfinished"
                             name="progress"></label>
                 </div>
@@ -627,14 +624,32 @@
                 let regex = new RegExp(`${SEARCH_BAR.value}`, "ig");
                 var activatedClasses = [];
 
+                for (let i = 0; i < ARTICLES.length; i++) {
+                    ARTICLES[i].style.display = "flex";
+                }
+
                 if (FILTER_BUTTON.checked) {
                     FILTERS.forEach(element => {
                         element.checked ? activatedClasses = [...activatedClasses, element.id] : "";
                     });
                 }
 
-                for (let i = 0; i < TEXTS.length; i++) {
-                    if (TEXTS[i].innerHTML.match(regex) && ARTICLES[i].className.match(new RegExp(`${activatedClasses.join(" ")}`, "ig"))) ARTICLES[i].style.display = "flex";
+                for (let i = 0; i < ARTICLES.length; i++) {
+
+                    var nameSimilarity = TEXTS[i].innerHTML.match(regex);
+                    var classSimilarity;
+
+                    // (?=.*?\bcat\b)(?=.*?\bdog\b)(?=(.*?\bplay\b){2})^.*$/
+                    
+                    let classRexexp = new RegExp(`.*?(\\b${activatedClasses.join("\\b)(.*?\\b")}\\b).*?`, "gi");
+
+                    console.log(classRexexp);
+
+                    let match = ARTICLES[i].className.match(classRexexp);
+                    console.log(match)
+                    if (match) classSimilarity = true; else classSimilarity = false;
+
+                    if (nameSimilarity && classSimilarity) ARTICLES[i].style.display = "flex";
                     else ARTICLES[i].style.display = "none";
                 }
 
