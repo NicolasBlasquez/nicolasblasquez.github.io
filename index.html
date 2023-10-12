@@ -27,11 +27,11 @@
         }
 
         :root {
-            --primary: #1E1E28;
-            --secondary: #20202A;
-            --ternary: #2B2B35;
-            --bright: #3c3c51;
-            --font: #C9CAD0;
+            --primary: #ffffff;
+            --secondary: #f0f0f0;
+            --ternary: #dadada;
+            --bright: #b6b6b6;
+            --font: #3b3b3b;
             --color1: #3eb74e;
         }
 
@@ -312,30 +312,35 @@
         }
 
         .search>div label[for="filters"] {
-            cursor: pointer;
             display: flex;
-            gap: 0.2rem;
-            transition: ease-in-out 0.2s;
-            font-size: 0.9rem;
-            border-radius: 0.4rem;
-            border: solid var(--bright) 1px;
-            color: var(--bright);
+            gap: 0.3rem;
             padding: 0.5rem;
+            align-items: center;
+            
+            border: solid var(--bright) 1px;
+            border-radius: 0.4rem;
 
+            color: var(--bright);
+            cursor: pointer;
+            font-size: 0.9rem;
             user-select: none;
+            
+            transition: ease-in-out 0.2s;
         }
 
-        .search>div label[for="filters"]::after {
-            content: "";
+        .search>div label[for="filters"] svg {
             width: 1rem;
-            height: 1rem;
-            display: block;
-            background-image: url("Assets/Icons/filter.svg");
+            aspect-ratio: 1;
         }
 
-        .search:has(input[type="text"]:focus) label[for="searchBar"]::after {
+        .search:has(input[type="text"]:focus) label[for="searchBar"] svg {
             animation: fancyRotation cubic-bezier(0.175, 0.885, 0.32, 1.275) 1 0.6s;
-            filter: brightness(4);
+            fill: var(--font);
+        }
+
+        label[for="searchBar"] svg {
+            margin-left: -1.6rem;
+            fill: var(--bright);
         }
 
         #filters {
@@ -400,6 +405,7 @@
         main article {
 
             position: relative;
+            z-index: 1;
 
             background-size: cover;
             background-position: center;
@@ -416,6 +422,10 @@
         main article h1 {
             margin-bottom: 0;
             font-size: 1.8rem;
+        }
+
+        main article * {
+            z-index: 1;
         }
 
         .actions {
@@ -444,19 +454,21 @@
             height: 100%;
         }
 
-        main:has(#filters:checked) label[for="filters"] {
-            filter: brightness(4);
+        main:has(#filters:checked) label[for="filters"] svg {
+            fill: var(--font);
         }
 
         main:has(#filters:checked) label[for="filters"] {
             animation: fancyClick ease-in-out 1 0.2s;
+            border-color: var(--font);
+            color: var(--font);
         }
 
         .background::before,
         .proyectArticle::before {
             content: "";
             position: absolute;
-            z-index: -1;
+            z-index: 0;
             top: 0;
             left: 0;
             width: 100%;
@@ -465,7 +477,11 @@
             border-radius: 0.5rem;
             background-size: cover;
             filter: brightness(0.8);
-            opacity: 0.25;
+            opacity: 0.45;
+        }
+
+        .background * {
+            z-index: 1;
         }
 
         @keyframes fancyClick {
@@ -503,6 +519,17 @@
 
             100% {
                 opacity: 1;
+            }
+        }
+
+        @media(prefers-color-scheme: dark) {
+            :root {
+                --primary: #1E1E28;
+                --secondary: #20202A;
+                --ternary: #2B2B35;
+                --bright: #3c3c51;
+                --font: #C9CAD0;
+                --color1: #3eb74e;
             }
         }
     </style>
@@ -576,8 +603,21 @@
         </header>
         <div class="search">
             <div>
-                <label for="searchBar"><input type="text" class="searchBar" id="searchBar" placeholder="Search"></label>
-                <label for="filters">Filters</label>
+                <label for="searchBar">
+                    <input type="text" class="searchBar" id="searchBar" placeholder="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--bright)" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                </label>
+                <label for="filters">
+                    Filters
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--bright)"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                </label>
             </div>
 
             <input type="checkbox" id="filters">
@@ -640,7 +680,7 @@
                     var classSimilarity;
 
                     // (?=.*?\bcat\b)(?=.*?\bdog\b)(?=(.*?\bplay\b){2})^.*$/
-                    
+
                     let classRexexp = new RegExp(`.*?(\\b${activatedClasses.join("\\b)(.*?\\b")}\\b).*?`, "gi");
 
                     console.log(classRexexp);
