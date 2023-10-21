@@ -78,14 +78,16 @@
         }
 
         .info>div:nth-child(1) {
-            background-color: var(--ternary);
-            padding: 1.5rem;
-            border-radius: 0.5rem 0.5rem 0 0;
+
             display: flex;
-            gap: 0.4rem;
             flex-direction: column;
             align-items: center;
-
+            
+            padding: 1.5rem;
+            border-radius: 0.5rem 0.5rem 0 0;
+            gap: 0.4rem;
+            
+            background-color: var(--ternary);
             background-image: radial-gradient(circle, var(--bright) 1px, rgba(0, 0, 0, 0) 1px);
             background-size: 0.83rem 0.83rem;
 
@@ -99,26 +101,32 @@
 
         }
 
-        .info>div:nth-child(1) .profile {
+        .info .profile {
+            display: block;
             width: 50%;
             aspect-ratio: 1;
             border-radius: 50%;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             background-image: url("Assets/Pictures/profile.jpg");
-            background-size: contain;
+            background-size: cover;
         }
 
-        .info>div:nth-child(1) .profile::after {
+        .info .profile::after {
             content: "";
+            display: block;
             width: 1rem;
             box-shadow: var(--color1) 0 0 0.3rem;
-            animation: blink 2s infinite;
+            animation: blink 1s infinite;
             aspect-ratio: 1;
             border-radius: 50%;
             position: relative;
-            bottom: -80%;
-            right: -35%;
+            bottom: -78%;
+            right: -78%;
             background-color: var(--color1);
+        }
+
+        #profile {
+            display: none;
         }
 
         .info>div:nth-child(2) {
@@ -316,7 +324,7 @@
             gap: 0.3rem;
             padding: 0.5rem;
             align-items: center;
-            
+
             border: solid var(--bright) 1px;
             border-radius: 0.4rem;
 
@@ -324,7 +332,7 @@
             cursor: pointer;
             font-size: 0.9rem;
             user-select: none;
-            
+
             transition: ease-in-out 0.2s;
         }
 
@@ -539,7 +547,9 @@
     <aside>
         <div class="info">
             <div>
-                <div src="Assets/Pictures/profile.jpg" class="profile"></div>
+                <input type="checkbox" id="profile">
+                <label class="profile" for="profile">
+                </label>
                 <div>
                     <span>Full-Stack Developer</span>
                     <span>UI / UX Designer</span>
@@ -547,7 +557,11 @@
             </div>
             <div>
                 <span><b>Nationality:</b> Argentinian</span>
-                <span><b>Age:</b> 16</span>
+                <span><b>Age:</b>
+                <script>
+                    document.write(Math.trunc((new Date() - new Date(2006, 11, 6)) / 31557600000));
+                </script>
+                </span>
             </div>
             <div class="knowledge">
                 <div>
@@ -605,7 +619,8 @@
             <div>
                 <label for="searchBar">
                     <input type="text" class="searchBar" id="searchBar" placeholder="Search">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--bright)" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--bright)"
+                        viewBox="0 0 16 16">
                         <path
                             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                     </svg>
@@ -651,6 +666,7 @@
 
             ArticleWebComponent({ classes: ["other", "finished"], title: "About Me QR", link1: "https://nicolasblasquez.github.io/AboutMeQR/><img src='Assets/Icons/QR.svg'", link2: "https://github.com/NicolasBlasquez/AboutMeQR/tree/gh-pages", image: "Assets/Pictures/aboutMeQR.png" });
             ArticleWebComponent({ classes: ["entertainment", "unfinished"], title: "PBT Launcher", link1: "https://nicolasblasquez.github.io/PBT-servers/PbtLauncher/", link2: "https://github.com/NicolasBlasquez/PBT-servers", image: "Assets/Pictures/pbtLauncher.png" });
+            ArticleWebComponent({ classes: ["entertainment", "finished"], title: "Boren't", link1: "https://nicolasblasquez.github.io/Boren-t", link2: "https://github.com/NicolasBlasquez/Boren-t", image: "Assets/Pictures/borent.png" });
 
             const SEARCH_BAR = document.querySelector(".searchBar");
             const ARTICLES = document.querySelectorAll(".proyectArticle");
