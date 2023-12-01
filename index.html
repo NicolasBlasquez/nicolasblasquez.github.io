@@ -61,16 +61,20 @@
 
         aside {
             flex: 1;
-
+            gap: 1rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             min-width: 13rem;
-            border-radius: 0.5rem;
+        }
+
+        aside>div {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
             border: solid var(--bright) 1px;
-
+            border-radius: 0.5rem;
             background-color: var(--secondary);
-
         }
 
         .info {
@@ -82,11 +86,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            
+
             padding: 1.5rem;
             border-radius: 0.5rem 0.5rem 0 0;
             gap: 0.4rem;
-            
+
             background-color: var(--ternary);
             background-image: radial-gradient(circle, var(--bright) 1px, rgba(0, 0, 0, 0) 1px);
             background-size: 0.83rem 0.83rem;
@@ -145,6 +149,37 @@
             display: flex;
             font-size: 0.8rem;
             justify-content: space-between;
+        }
+
+        .resume {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 1rem;
+            transition: ease-in-out 0.2s;
+            background-color: var(--secondary);
+            border-radius: 0.5rem;
+            color: var(--font);
+
+        }
+
+        .resume h3 {
+            margin: 0;
+        }
+
+        .resume img {
+            display: block;
+            height: 1.4rem;
+            transition: ease-in-out 0.15s;
+            aspect-ratio: 1;
+        }
+
+        .resume:hover {
+            filter: brightness(1.2);
+        }
+
+        .resume:hover img {
+            transform: translateX(0.4rem);
         }
 
         .knowledge {
@@ -308,15 +343,6 @@
             min-width: 12rem;
             display: flex;
             align-items: center;
-        }
-
-        .search>div label[for="searchBar"]::after {
-            content: "";
-            margin-left: -1.8rem;
-            width: 1rem;
-            height: 1rem;
-            display: block;
-            background-image: url("Assets/Icons/search.svg");
         }
 
         .search>div label[for="filters"] {
@@ -544,68 +570,79 @@
 </head>
 
 <body>
+
+    <script src="Assets/Scripts/links.js"></script>
+
     <aside>
-        <div class="info">
-            <div>
-                <input type="checkbox" id="profile">
-                <label class="profile" for="profile">
-                </label>
+        <div>
+            <div class="info">
                 <div>
-                    <span>Full-Stack Developer</span>
-                    <span>UI / UX Designer</span>
+                    <input type="checkbox" id="profile">
+                    <label class="profile" for="profile">
+                    </label>
+                    <div>
+                        <span>Full-Stack Developer</span>
+                        <span>UI / UX Designer</span>
+                    </div>
+                </div>
+                <div>
+                    <span><b>Nationality:</b> Argentinian</span>
+                    <span><b>Age:</b>
+                        <script>
+                            document.write(Math.trunc((new Date() - new Date(2006, 11, 6)) / 31557600000));
+                        </script>
+                    </span>
+                </div>
+                <div class="knowledge">
+                    <div>
+                        <span><b>HTML</b><span title="Senior">SR</span></span>
+                        <div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <span><b>CSS</b><span title="Semi-Senior">SSR</span></span>
+                        <div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <span><b>JS</b><span title="Semi-Senior">SSR</span></span>
+                        <div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <span><b>PHP</b><span title="Junior">JR</span></span>
+                        <div>
+                            <div></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div>
-                <span><b>Nationality:</b> Argentinian</span>
-                <span><b>Age:</b>
-                <script>
-                    document.write(Math.trunc((new Date() - new Date(2006, 11, 6)) / 31557600000));
-                </script>
-                </span>
-            </div>
-            <div class="knowledge">
-                <div>
-                    <span><b>HTML</b><span title="Senior">SR</span></span>
-                    <div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
-                <div>
-                    <span><b>CSS</b><span title="Semi-Senior">SSR</span></span>
-                    <div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
-                <div>
-                    <span><b>JS</b><span title="Semi-Senior">SSR</span></span>
-                    <div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
-                <div>
-                    <span><b>PHP</b><span title="Junior">JR</span></span>
-                    <div>
-                        <div></div>
-                    </div>
-                </div>
+            <div class="socialMedia">
+                <a href="https://github.com/NicolasBlasquez">
+                    <img src="Assets/Icons/github.svg">
+                </a>
+                <a href="https://stackoverflow.com/users/16148585/nick">
+                    <img src="Assets/Icons/stackoverflow.svg">
+                </a>
+                <a href="https://twitter.com/NicolasBla5quez">
+                    <img src="Assets/Icons/twitter.svg">
+                </a>
+                <a href="https://discordapp.com/users/nickx3">
+                    <img src="Assets/Icons/discord.svg">
+                </a>
             </div>
         </div>
-        <div class="socialMedia">
-            <a href="https://github.com/NicolasBlasquez" target="_blank">
-                <img src="Assets/Icons/github.svg">
-            </a>
-            <a href="https://stackoverflow.com/users/16148585/nick" target="_blank">
-                <img src="Assets/Icons/stackoverflow.svg">
-            </a>
-            <a href="https://twitter.com/NicolasBla5quez" target="_blank">
-                <img src="Assets/Icons/twitter.svg">
-            </a>
-            <a href="https://discordapp.com/users/nickx3" target="_blank">
-                <img src="Assets/Icons/discord.svg">
+        <div>
+            <a href="Resume/" class="resume">
+                <h3>View my resume</h3>
+                <img src="Assets/Icons/arrow.svg">
             </a>
         </div>
     </aside>
@@ -650,6 +687,9 @@
                 </div>
             </div>
         </div>
+    </main>
+
+    <footer>
         <script>
 
             "use strict"
@@ -699,8 +739,6 @@
 
                     let classRexexp = new RegExp(`.*?(\\b${activatedClasses.join("\\b)(.*?\\b")}\\b).*?`, "gi");
 
-                    console.log(classRexexp);
-
                     let match = ARTICLES[i].className.match(classRexexp);
                     console.log(match)
                     if (match) classSimilarity = true; else classSimilarity = false;
@@ -720,7 +758,7 @@
             })
 
         </script>
-    </main>
+    </footer>
 </body>
 
 </html>

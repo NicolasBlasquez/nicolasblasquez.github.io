@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Assets/Icons/resume.svg" type="image/x-icon">
+    <title>Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap');
+
+        ::-webkit-scrollbar {
+            background-color: var(--primary);
+            width: 0.8vw;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--ternary);
+            border-radius: 1rem;
+        }
+
+        * {
+            text-decoration: none;
+            list-style: none;
+            outline: none;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            color: var(--font);
+        }
+
+        a.link::after {
+            content: "";
+            display: inline-block;
+            height: 0.8rem;
+            aspect-ratio: 1;
+            background-image: url("Assets/Icons/link.svg");
+            background-size: 100%;
+            margin-left: 0.3rem;
+            background-repeat: no-repeat;
+        }
+
+        :root {
+
+            --border-radius: 0.5rem;
+            --primary: #ffffff;
+            --secondary: #f0f0f0;
+            --ternary: #dadada;
+            --bright: #b6b6b6;
+            --font: #3b3b3b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--primary);
+            font-family: Roboto;
+            color: var(--font);
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        body {
+            padding: 2.5rem 1rem;
+            max-width: 65rem;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            gap: 1rem;
+        }
+
+        aside {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .profile {
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            width: 100%;
+        }
+
+        .info {
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .info div {
+            display: flex;
+            gap: 0.25rem;
+            justify-content: center;
+        }
+
+        .contact {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+            gap: 1rem;
+            padding: 0;
+        }
+
+        .contact a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border: var(--ternary) solid 1px;
+            border-radius: var(--border-radius);
+
+            aspect-ratio: 16/9;
+
+            background-color: var(--secondary);
+            background-image: radial-gradient(circle, var(--ternary) 1px, rgba(0, 0, 0, 0) 1px);
+            background-size: 1rem 1rem;
+        }
+
+        .contact img {
+            height: 55%;
+        }
+
+        .languajes {
+            display: flex;
+            border: var(--ternary) solid 1px;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            background-color: var(--secondary);
+
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .icon {
+            border-radius: 0.3rem;
+            height: 1rem;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            flex: 3;
+            padding: 0 1rem;
+            gap: 1.5rem;
+            min-width: 25rem;
+        }
+
+        main>div, main section{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+        }
+
+        section {
+            gap: 0.5rem;
+        }
+
+        h3 {
+            opacity: 0.5;    
+        }
+
+        h1 + h3 {
+            margin-top: 0.2rem;
+        }
+
+        .row {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        @media(prefers-color-scheme: dark) {
+            :root {
+                --primary: #1E1E28;
+                --secondary: #20202A;
+                --ternary: #2B2B35;
+                --bright: #3c3c51;
+                --font: #C9CAD0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="../Assets/Scripts/links.js"></script>
+
+    <aside>
+        <div class="profile">
+            <img src="Assets/Pictures/profile.jpg" class="profile">
+        </div>
+        <div class="info">
+            <div>
+                <b>Nationality:</b><span>Argentinian</span>
+            </div>
+            <div>
+                <b>Date of birth:</b><span>6/11/2006</span>
+            </div>
+        </div>
+        <div class="contact">
+            <a href="https://github.com/NicolasBlasquez" class="social">
+                <img src="../Assets/Icons/github.svg">
+            </a>
+            <a href="tel:+54352515483334" class="social">
+                <img src="Assets/Icons/phone.svg">
+            </a>
+            <a href="https://mail.google.com/mail/u/?authuser=blasqueznicolas2006@gmail.com" class="social">
+                <img src="Assets/Icons/email.svg">
+            </a>
+            <a href="https://nicolasblasquez.github.io" class="social">
+                <img src="Assets/Icons/globe.svg">
+            </a>
+        </div>
+        <div class="languajes">
+            <div class="row">
+                <img src="Assets/Icons/es.svg" class="icon">
+                <h4>Spanish:</h4><span>Native speaker</span>
+            </div>
+            <div class="row">
+                <img src="Assets/Icons/uk.svg" class="icon">
+                <h4>English:</h4><span>B1 level</span>
+            </div>
+        </div>
+    </aside>
+
+    <main>
+        <div>
+            <div>
+                <h1>Nicolas Blasquez</h1>
+                <h3>Front-End Developer</h3>
+            </div>
+            <p>I'm proactive and I know how to manage responsibilities and use my time efficiently. I'm currently
+                specialising in Back-End development while training my Front-End skills. My objective is to be a
+                Full-Stack
+                developer. I'm proactive and I like to keep everything simple and clear. </p>
+
+        </div>
+        <div>
+            <section>
+                <div class="row">
+                    <h2>High School</h2>
+                    <h3>[2019 - 2023]</h3>
+                </div>
+                <a href="https://pioleon.com.ar/" class="link">Pio Leon Educational Association</a>
+            </section>
+            <!-- <section>
+                <div class="row">
+                    <h2>Courses</h2>
+                    <h3>[0000 - 0000]</h3>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto at eum corrupti, dolorem, delectus
+                    animi, asperiores laborum aspernatur distinctio cupiditate consequuntur. Ratione, excepturi culpa
+                    placeat eveniet officiis voluptatum doloremque facilis!</p>
+            </section> -->
+            <!-- <section>
+                <div class="row">
+                    <h2>Certificates and Achievements</h2>
+                </div>
+                <p>English Exam</p>
+                <p>Etc.</p>
+            </section> -->
+            <section>
+                <div class="row">
+                    <h2>Skills</h2>
+                </div>
+                <div class="row">
+                    <img src="Assets/Icons/html.svg" class="icon">
+                    <h4>HTML:</h4>
+                    <p>Senior</p>
+                </div>
+                <div class="row">
+                    <img src="Assets/Icons/js.svg" class="icon">
+                    <h4>JS:</h4>
+                    <p>Semi-Senior</p>
+                </div>
+                <div class="row">
+                    <img src="Assets/Icons/css.svg" class="icon">
+                    <h4>CSS:</h4>
+                    <p>Semi-Senior</p>
+                </div>
+                <div class="row">
+                    <img src="Assets/Icons/php.svg" class="icon">
+                    <h4>PHP:</h4>
+                    <p>Junior</p>
+                </div>
+            </section>
+            <!-- <section>
+                <div class="row">
+                    <h2>Other</h2>
+                </div>
+                <p>Scouting</p>
+            </section> -->
+        </div>
+
+    </main>
+
+    <footer></footer>
+
+</body>
+
+</html>
