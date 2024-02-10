@@ -4,244 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="Assets/Icons/suitcase.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="./Assets/Icons/suitcase.svg" type="image/x-icon">
     <title>Nicolas Blasquez</title>
+
+    <link rel="stylesheet" href="./Assets/Scripts/CSS/golbalStyles.css">
+    <link rel="stylesheet" href="./Assets/Scripts/CSS/animations.css">
+    <link rel="stylesheet" href="./Assets/Scripts/CSS/medals.css">
+    <link rel="stylesheet" href="./Assets/Scripts/CSS/aside.css">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap');
-
-        ::-webkit-scrollbar {
-            background-color: var(--primary);
-            width: 0.8vw;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: var(--ternary);
-            border-radius: 1rem;
-        }
-
-        * {
-            text-decoration: none;
-            list-style: none;
-            outline: none;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #ffffff;
-            --secondary: #f0f0f0;
-            --ternary: #dadada;
-            --bright: #b6b6b6;
-            --font: #3b3b3b;
-            --color1: #3eb74e;
-        }
-
-        /* General settings */
-
-        span {
-            font-size: 0.75rem;
-            opacity: 0.8;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        body {
-            display: flex;
-            flex-flow: row wrap;
-            align-items: flex-start;
-            gap: 1rem;
-
-            background-color: var(--primary);
-            font-family: Roboto;
-            color: var(--font);
-            margin: 0.9rem;
-        }
-
-        aside {
-            flex: 1;
-            gap: 1rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-width: 13rem;
-        }
-
-        aside>div {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            border: solid var(--bright) 1px;
-            border-radius: 0.5rem;
-            background-color: var(--secondary);
-        }
-
-        .info {
-            overflow-y: auto;
-        }
-
-        .info>div:nth-child(1) {
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            padding: 1.5rem;
-            border-radius: 0.5rem 0.5rem 0 0;
-            gap: 0.4rem;
-
-            background-color: var(--ternary);
-            background-image: radial-gradient(circle, var(--bright) 1px, rgba(0, 0, 0, 0) 1px);
-            background-size: 0.83rem 0.83rem;
-
-        }
-
-        .info>div:nth-child(1) div {
-            display: flex;
-            gap: 0.4rem;
-            flex-direction: column;
-            align-items: center;
-
-        }
-
-        .info .profile {
-            display: block;
-            width: 50%;
-            aspect-ratio: 1;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            background-image: url("Assets/Pictures/profile.jpg");
-            background-size: cover;
-        }
-
-        .info .profile::after {
-            content: "";
-            display: block;
-            width: 1rem;
-            box-shadow: var(--color1) 0 0 0.3rem;
-            animation: blink 1s infinite;
-            aspect-ratio: 1;
-            border-radius: 50%;
-            position: relative;
-            bottom: -78%;
-            right: -78%;
-            background-color: var(--color1);
-        }
-
-        #profile {
-            display: none;
-        }
-
-        .info>div:nth-child(2) {
-            padding: 1.8rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-
-            border-width: 0 0 2px 0;
-            border-style: solid;
-            border-image: linear-gradient(to right, #0000 9%, var(--ternary) 10%, var(--ternary) 90%, #0000 91%) 1;
-
-        }
-
-        .info>div:nth-child(2) span {
-            display: flex;
-            font-size: 0.8rem;
-            justify-content: space-between;
-        }
-
-        .resume {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 1rem;
-            transition: ease-in-out 0.2s;
-            background-color: var(--secondary);
-            border-radius: 0.5rem;
-            color: var(--font);
-
-        }
-
-        .resume h3 {
-            margin: 0;
-        }
-
-        .resume img {
-            display: block;
-            height: 1.4rem;
-            transition: ease-in-out 0.15s;
-            aspect-ratio: 1;
-        }
-
-        .resume:hover {
-            filter: brightness(1.2);
-        }
-
-        .resume:hover img {
-            transform: translateX(0.4rem);
-        }
-
-        .knowledge {
-            padding: 1.8rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .knowledge>div {
-
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-
-        }
-
-        .knowledge>div>span {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .knowledge>div>div {
-            height: 0.5rem;
-            display: flex;
-            border-radius: 5rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
-        }
-
-        .knowledge>div>div div {
-            filter: brightness(0.8);
-            border-radius: 5rem;
-            background-color: var(--color1);
-        }
-
-        .socialMedia {
-
-            margin-top: auto;
-            padding: 1.8rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            gap: 0.6rem;
-
-            background-color: var(--secondary);
-            background-image: radial-gradient(circle, var(--bright) 1px, rgba(0, 0, 0, 0) 1px);
-            background-size: 1rem 1rem;
-            border-radius: 0 0 0.5rem 0.5rem;
-
-        }
-
-        .socialMedia img {
-            width: 1.2rem;
-        }
-
-        .socialMedia img:hover {
-            filter: brightness(0.85);
-        }
-
         main {
-            position: relative;
             flex: 4;
 
             display: grid;
@@ -268,7 +40,7 @@
 
             display: flex;
             position: relative;
-            padding: 1.3rem;
+            padding: 1.15rem;
             align-items: center;
             width: 100%;
 
@@ -277,24 +49,22 @@
         header>div h1 {
             font-family: Montserrat;
             font-size: 2.4rem;
-            margin: 0 0 0.8rem 0;
+            margin: 0 0 0.2rem 0;
         }
 
-        header>div a {
-            display: flex;
-            gap: 0.6rem;
-            align-items: center;
-            color: var(--font);
-            border: var(--font) solid 1px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            font-weight: 600;
-            padding: 0.8rem 1.2rem;
-            border-radius: 0.5rem;
+        header h1::after {
+            content: "_";
+            color: transparent;
+            background-clip: text;
+            background-image: linear-gradient(125deg, var(--gold-primary) 0%, var(--gold-font) 100%);
+            animation: cursor 1s infinite;
+            margin-left: 0.25rem;
         }
 
         header>div::before {
-            background-image: url("Assets/Pictures/forest.png");
+            background-image: url("Assets/Pictures/forest.jpeg");
+            background-size: cover;
+            background-position: center;
         }
 
         .search {
@@ -303,7 +73,7 @@
             grid-column: 1 / -1;
             gap: 1rem;
             transition: ease-in-out 0.2s;
-
+            color: var(--bright);
         }
 
         .search>div:nth-child(1) {
@@ -321,8 +91,9 @@
             display: block;
             background-color: var(--primary);
             font-size: 0.9rem;
-            border-radius: 0.4rem;
+            border: 0;
             border: solid var(--bright) 1px;
+            border-radius: 0.4rem;
             color: var(--font);
             padding: 0.5rem;
             width: 100%;
@@ -339,37 +110,10 @@
             color: var(--bright);
         }
 
-        .search>div label[for="searchBar"] {
+        label[for="searchBar"] {
             min-width: 12rem;
             display: flex;
             align-items: center;
-        }
-
-        .search>div label[for="filters"] {
-            display: flex;
-            gap: 0.3rem;
-            padding: 0.5rem;
-            align-items: center;
-
-            border: solid var(--bright) 1px;
-            border-radius: 0.4rem;
-
-            color: var(--bright);
-            cursor: pointer;
-            font-size: 0.9rem;
-            user-select: none;
-
-            transition: ease-in-out 0.2s;
-        }
-
-        .search>div label[for="filters"] svg {
-            width: 1rem;
-            aspect-ratio: 1;
-        }
-
-        .search:has(input[type="text"]:focus) label[for="searchBar"] svg {
-            animation: fancyRotation cubic-bezier(0.175, 0.885, 0.32, 1.275) 1 0.6s;
-            fill: var(--font);
         }
 
         label[for="searchBar"] svg {
@@ -377,8 +121,54 @@
             fill: var(--bright);
         }
 
-        #filters {
-            display: none;
+        .displayButton,
+        label[for="filters"] {
+            display: flex;
+            padding: 0.5rem;
+            align-items: center;
+            border: solid var(--bright) 1px;
+            border-radius: 0.4rem;
+
+            cursor: pointer;
+            font-size: 0.9rem;
+            user-select: none;
+            transition: ease-in-out 0.2s;
+
+        }
+
+        .displayButton svg {
+            transition: ease-in-out 0.2s;
+        }
+
+        .displayButton:not(:has(:checked)) .wide {
+            fill: var(--font);
+        }
+
+        .displayButton:has(:checked) .compact {
+            fill: var(--font);
+        }
+
+        .displayButton {
+            gap: 0.75rem;
+        }
+
+        .displayButton svg {
+            height: 100%;
+        }
+
+        label[for="filters"] {
+            gap: 0.3rem;
+            color: var(--bright);
+        }
+
+        label[for="filters"] svg {
+            width: 1rem;
+            aspect-ratio: 1;
+        }
+
+        .search:has(input[type="text"]:focus) label[for="searchBar"] svg {
+            animation: fancyRotation cubic-bezier(0.175, 0.885, 0.32, 1.275) 1 0.6s;
+            fill: var(--font);
         }
 
         #filters+.filters {
@@ -441,20 +231,26 @@
             position: relative;
             z-index: 1;
 
+            box-shadow: var(--secondary) 0 0 0.5rem 0.5rem;
+
             background-size: cover;
             background-position: center;
 
             border: solid var(--bright) 1px;
-            padding: 0 1rem;
+            padding: 0 1.15rem;
             border-radius: 0.5rem;
 
             display: flex;
             gap: 5rem;
-            flex-direction: column;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
 
         main article h1 {
-            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            flex: 1;
+            margin: 1.15rem 0 0 0;
             font-size: 1.8rem;
         }
 
@@ -464,13 +260,14 @@
 
         .actions {
             margin-top: auto;
+            width: 100%;
             padding: 1rem 0.4rem 1rem 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .actions a:nth-child(1) {
+        .readMore {
             color: var(--font);
             display: flex;
             align-items: center;
@@ -478,6 +275,8 @@
             border: solid var(--font) 1px;
             border-radius: 0.5rem;
             padding: 0.5rem 1rem;
+            cursor: pointer;
+            user-select: none;
         }
 
         .actions a.github {
@@ -486,6 +285,24 @@
 
         .actions img {
             height: 100%;
+        }
+
+        main:has(#display:checked) article {
+            gap: 1rem;
+            align-items: center;
+        }
+
+        main:has(#display:checked) article h1 {
+            margin: 1rem 0;
+        }
+
+        main:has(#display:checked) .actions {
+            margin: 0;
+            width: auto;
+        }
+
+        main:has(#display:checked) .readMore {
+            display: none;
         }
 
         main:has(#filters:checked) label[for="filters"] svg {
@@ -517,196 +334,193 @@
         .background * {
             z-index: 1;
         }
-
-        @keyframes fancyClick {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(0.98);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes fancyRotation {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes blink {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.9;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @media(prefers-color-scheme: dark) {
-            :root {
-                --primary: #1E1E28;
-                --secondary: #20202A;
-                --ternary: #2B2B35;
-                --bright: #3c3c51;
-                --font: #C9CAD0;
-                --color1: #3eb74e;
-            }
-        }
     </style>
 </head>
 
 <body>
 
-    <script src="Assets/Scripts/links.js"></script>
+    <script src="Assets/Scripts/JS/links.js"></script>
 
-    <aside>
-        <div>
-            <div class="info">
-                <div>
-                    <input type="checkbox" id="profile">
-                    <label class="profile" for="profile">
-                    </label>
-                    <div>
-                        <span>Full-Stack Developer</span>
-                        <span>UI / UX Designer</span>
-                    </div>
-                </div>
-                <div>
-                    <span><b>Nationality:</b> Argentinian</span>
-                    <span><b>Age:</b>
-                        <script>
-                            document.write(Math.trunc((new Date() - new Date(2006, 11, 6)) / 31557600000));
-                        </script>
-                    </span>
-                </div>
-                <div class="knowledge">
-                    <div>
-                        <span><b>HTML</b><span title="Senior">SR</span></span>
-                        <div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div>
-                        <span><b>CSS</b><span title="Semi-Senior">SSR</span></span>
-                        <div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div>
-                        <span><b>JS</b><span title="Semi-Senior">SSR</span></span>
-                        <div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div>
-                        <span><b>PHP</b><span title="Junior">JR</span></span>
-                        <div>
-                            <div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="socialMedia">
-                <a href="https://github.com/NicolasBlasquez">
-                    <img src="Assets/Icons/github.svg">
-                </a>
-                <a href="https://stackoverflow.com/users/16148585/nick">
-                    <img src="Assets/Icons/stackoverflow.svg">
-                </a>
-                <a href="https://twitter.com/NicolasBla5quez">
-                    <img src="Assets/Icons/twitter.svg">
-                </a>
-                <a href="https://discordapp.com/users/nickx3">
-                    <img src="Assets/Icons/discord.svg">
-                </a>
-            </div>
-        </div>
-        <div>
-            <a href="Resume/" class="resume">
-                <h3>View my resume</h3>
-                <img src="Assets/Icons/arrow.svg">
-            </a>
-        </div>
-    </aside>
-    <main>
-        <header>
-            <div class="background">
-                <h1>Discover my proyects!</h1>
-            </div>
-        </header>
-        <div class="search">
+    <div>
+
+        <aside>
             <div>
-                <label for="searchBar">
-                    <input type="text" class="searchBar" id="searchBar" placeholder="Search">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--bright)"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                    </svg>
-                </label>
-                <label for="filters">
-                    Filters
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--bright)"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                    </svg>
-                </label>
-            </div>
-
-            <input type="checkbox" id="filters">
-            <div class="filters">
-                <div>
-                    <label for="entertainment">Entertainment<input type="radio" class="class" id="entertainment"
-                            name="type"></label>•
-                    <label for="other">Other<input type="radio" class="class" id="other" name="type"></label>
+                <div class="info">
+                    <div class="dotsBackground">
+                        <div class="profile"></div>
+                        <div>
+                            <h3><b>Nicolas Blasquez</b></h3>
+                            <span>Full-Stack Developer</span>
+                            <span>UI / UX Designer</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span><b>Nationality:</b> Argentinian</span>
+                        <span><b>Age:</b>
+                            <script>
+                                document.write(Math.trunc((new Date() - new Date(2006, 11, 6)) / 31557600000));
+                            </script>
+                        </span>
+                    </div>
+                    <div class="knowledge">
+                        <h3><b>Tech Stack:</b></h3>
+                        <input type="checkbox" id="knowledgeInput">
+                        <div class="languages">
+                            <label class="seeMore" for="knowledgeInput">
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label for="finished">Finished<input type="radio" class="class" id="finished"
-                            name="progress"></label>•
-                    <label for="unfinished">Unfinished<input type="radio" class="class" id="unfinished"
-                            name="progress"></label>
+                <div class="socialMedia dotsBackground">
+                    <a href="https://github.com/NicolasBlasquez">
+                        <img src="Assets/Icons/SocialMedia/github.svg">
+                    </a>
+                    <a href="https://stackoverflow.com/users/16148585/nick">
+                        <img src="Assets/Icons/SocialMedia/stackoverflow.svg">
+                    </a>
+                    <a href="https://twitter.com/NicolasBla5quez">
+                        <img src="Assets/Icons/SocialMedia/twitter.svg">
+                    </a>
+                    <a href="https://discordapp.com/users/nickx3">
+                        <img src="Assets/Icons/SocialMedia/discord.svg">
+                    </a>
                 </div>
             </div>
-        </div>
-    </main>
+            <div>
+                <a href="Resume/" class="resume">
+                    <h3>View my resume</h3>
+                    <img src="Assets/Icons/arrow.svg">
+                </a>
+            </div>
+        </aside>
+        <main>
+            <header>
+                <div class="background">
+                    <h1>Discover my <b class="gradientFont">proyects!</b></h1>
+                </div>
+            </header>
+            <div class="search">
+                <div>
+                    <label for="searchBar">
+                        <input type="text" class="searchBar" id="searchBar" placeholder="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--bright)"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </label>
+                    <label for="display" class="displayButton">
+                        <input type="checkbox" id="display">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="wide" fill="var(--bright)"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="compact"
+                            fill="var(--bright)" viewBox="0 0 16 16">
+                            <path
+                                d="M4 2v2H2V2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1M9 2v2H7V2zm5 0v2h-2V2zM4 7v2H2V7zm5 0v2H7V7zm5 0h-2v2h2zM4 12v2H2v-2zm5 0v2H7v-2zm5 0v2h-2v-2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z" />
+                        </svg>
+                    </label>
+                    <label for="filters">
+                        Filters
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--bright)"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </label>
+                </div>
 
-    <footer>
+                <input type="checkbox" id="filters">
+                <div class="filters">
+                    <div>
+                        <label for="entertainment">Entertainment<input type="radio" class="class" id="entertainment"
+                                name="type"></label>•
+                        <label for="other">Other<input type="radio" class="class" id="other" name="type"></label>
+                    </div>
+                    <div>
+                        <label for="finished">Finished<input type="radio" class="class" id="finished"
+                                name="progress"></label>•
+                        <label for="unfinished">Unfinished<input type="radio" class="class" id="unfinished"
+                                name="progress"></label>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Printing the knowledge / tech stack -->
+
         <script>
+
+            const TECH_CONTAINER = document.querySelector(".languages");
+
+            const LEVELS = ["bronze", "silver", "gold"];
+
+            function KnowledgeWebComponent({ level = 0, inner }) {
+
+                let knowledgeMedal = Object.assign(document.createElement("div"), {
+                    classList: [`${LEVELS[level]} medal`],
+                    innerHTML: inner
+                });
+
+                TECH_CONTAINER.prepend(knowledgeMedal);
+            }
+
+            KnowledgeWebComponent({ level: 0, inner: `<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m24.36,13.75h-3.34l-1.26,6.91h1.64l.35-1.87h1.03c2.17,0,3.34-.53,3.78-2.37.38-1.58-.59-2.67-2.2-2.67Zm-1.32,3.78h-1.05l.47-2.52h1.29c1.08,0,1.29.5,1.23,1.03-.15,1.38-1,1.49-1.93,1.49Z"/><path d="m19.88,15.77l-.64,3.02h-1.67l.59-2.78c.09-.38.06-.64-.09-.79-.12-.15-.41-.21-.82-.21h-1.32l-.79,3.78h-1.64l1.55-7.56h1.67l-.53,2.52h1.46c.94,0,1.55.15,1.9.47s.47.85.32,1.55Z"/><path d="m11.18,13.75h-3.34l-1.29,6.91h1.67l.32-1.87h1.05c2.17,0,3.34-.53,3.78-2.37.38-1.58-.59-2.67-2.2-2.67Zm-1.32,3.78h-1.08l.47-2.52h1.32c1.05,0,1.29.5,1.23,1.03-.15,1.38-1,1.49-1.93,1.49Z"/></svg>` })
+            KnowledgeWebComponent({ level: 1, inner: `<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m12.27,12.52c.18-.21,1.11-.34,1.29-.17.1.09.09.22.09.34,0,2.74,0,5.48,0,8.22,0,.42-.06.85-.25,1.23-.35.68-.92.99-1.68,1.04-.94.07-1.73-.25-2.49-.78-.38-.26-.81-.45-1.22-.67-.64-.34-.95-.88-.95-1.59,0-2.79,0-5.57,0-8.36,0-.71.45-1.15.99-1.47,2.33-1.37,4.68-2.71,7.01-4.07.64-.37,1.26-.36,1.89,0,2.31,1.34,4.63,2.67,6.94,4.02.67.4,1.07.99,1.07,1.83-.02,2.62-.01,5.24,0,7.85,0,.82-.31,1.42-1.04,1.83-1.16.64-2.29,1.35-3.45,1.98-1.24.67-2.4,1.46-3.68,2.06-.64.3-1.2.24-1.85-.14-.79-.47-1.59-.93-2.49-1.43.51-.23.97-.44,1.43-.63.12-.05.23.07.33.13.46.27.92.53,1.37.82.29.19.54.19.84.01,1.62-.95,3.23-1.9,4.88-2.81.65-.36,1.25-.78,1.91-1.11.29-.15.4-.33.4-.67-.02-2.65-.01-5.3,0-7.95,0-.29-.07-.47-.34-.62-2.32-1.32-4.64-2.66-6.95-4-.23-.13-.39-.14-.62,0-2.32,1.35-4.65,2.7-6.98,4.03-.23.13-.3.29-.3.55,0,2.69,0,5.39,0,8.08,0,.15-.04.33.12.41.85.42,1.54,1.13,2.51,1.35.61.14,1.18-.24,1.22-.82.08-.17.05-.36.05-.54,0-2,0-4.01,0-6.01,0-.65-.02-1.3-.03-1.95Z"/><path d="m18.34,12.07c.55.04,1.09.09,1.61.28,1.17.41,1.56,1.19,1.7,2.24.02.17-.06.26-.23.27-.3,0-.61,0-.91,0-.17,0-.28-.14-.3-.29-.13-.81-.73-1.08-1.43-1.15-.63-.07-1.27-.07-1.89.08-.3.07-.57.2-.72.51-.26.54.06,1.01.76,1.13.94.15,1.88.3,2.82.46.28.05.56.12.83.22.95.34,1.34.89,1.36,1.87.02,1.02-.51,1.82-1.54,2.19-1.47.53-2.97.53-4.44-.01-1.03-.38-1.58-1.31-1.61-2.16,0-.31.11-.42.4-.38.05,0,.09,0,.14,0,.52-.08.83.05.99.63.21.77.92.88,1.61.92.03,0,.07,0,.1.01.45.08.9.1,1.35-.01,0,0,.02.02.02.02v-.02c.37.02.71-.07,1.01-.24.37-.2.52-.53.5-.95-.02-.39-.32-.54-.62-.64-.93-.3-1.9-.29-2.85-.46-.55-.1-1.09-.22-1.56-.53-1.19-.79-1.1-2.61.16-3.42.66-.43,1.41-.51,2.17-.58.19,0,.38.01.58.02Z"/></svg>` })
+            KnowledgeWebComponent({ level: 2, inner: `<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m12.82,10.15h1.96v7.97c0,1.11-.32,2.01-.93,2.65-.64.64-1.46.98-2.49.98s-1.91-.32-2.49-.93c-.35-.35-.59-.77-.74-1.27-.11-.38-.16-.8-.16-1.27v-.32h1.93v.32c0,.53.13.95.37,1.22.26.29.61.42,1.09.42.45,0,.79-.16,1.06-.45.26-.32.4-.77.4-1.32v-7.99Z"/><path d="m24.03,18.65c0,.98-.37,1.77-1.06,2.36-.66.58-1.56.87-2.67.87-.71,0-1.4-.16-2.04-.48-.64-.29-1.11-.74-1.46-1.27-.37-.56-.53-1.16-.53-1.85v-.34h1.96v.34c0,.56.16.98.53,1.3s.87.48,1.54.48c.58,0,1.03-.13,1.35-.37.26-.26.42-.58.42-1.01,0-.45-.13-.77-.4-.98-.29-.26-.87-.53-1.69-.79-1.19-.37-2.01-.82-2.57-1.38-.56-.58-.85-1.3-.85-2.12,0-.95.34-1.75,1.03-2.36.69-.61,1.56-.93,2.62-.93.74,0,1.38.16,1.96.48.58.32,1.03.74,1.35,1.3.32.56.48,1.16.48,1.83v.32h-1.96v-.32c0-.56-.16-1.01-.48-1.3-.29-.32-.74-.48-1.35-.48-.56,0-.98.13-1.27.37-.26.26-.42.61-.42,1.06,0,.34.13.61.4.87.32.26.85.53,1.61.77.85.24,1.48.53,1.99.87.5.32.87.71,1.14,1.16.24.45.37.98.37,1.59Z"/></svg>` })
+            KnowledgeWebComponent({ level: 2, inner: `<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><polygon points="22.09 8.65 21.76 13.97 21.3 21.62 16.04 23.35 10.79 21.62 10.58 17.96 13.24 17.96 13.31 19.62 16.04 20.55 18.76 19.62 18.97 16.63 13.11 16.63 12.97 13.97 19.09 13.97 19.29 11.31 10.12 11.31 9.91 8.65 22.09 8.65"/></svg>` })
+            KnowledgeWebComponent({ level: 2, inner: `<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><polygon points="12.72 11.31 12.9 13.97 21.68 13.97 21.2 21.62 15.96 23.35 10.72 21.62 10.46 17.95 13.11 17.95 13.25 19.63 15.96 20.56 18.7 19.63 18.89 16.62 10.38 16.62 9.92 8.65 22.08 8.65 21.86 11.31 12.72 11.31"/></svg>` })
+
+        </script>
+
+        <!-- Printing the articles -->
+        <script>
+
+            /**
+             * .featured0: Adds Bronze medal
+             * .featured1: Adds Silver medal
+             * .featured2: Adds Golden medal
+             * .new: Adds text "new"
+            */
 
             "use strict"
 
-            const CONTAINER = document.querySelector("main");
+            const ARTICLE_CONTAINER = document.querySelector("main");
             let i = 0;
 
-            function ArticleWebComponent({ classes = ["other"], title = "Example", link1 = "", link2 = "", image }) {
-
-                let articleElement = Object.assign(document.createElement("article"), { classList: `article${i} proyectArticle ` + classes.join(" "), innerHTML: `<h1 class='title'>${title}</h1><div class='actions'><a href=${link1}>Read More</a><a href=${link2} class='github'><img src='Assets/Icons/github.svg'></a></div><style>.article${i}::before {background-image: url('${image}');}</style>` });
-                CONTAINER.appendChild(articleElement);
+            function ArticleWebComponent({ classes = ["other"], title = "Example", link1 = "", link2 = "", image, description = "<h1>This proyect has no description</h1>" }) {
+                ARTICLE_CONTAINER.append(Object.assign(document.createElement("article"), {
+                    classList: `article${i} proyectArticle ` + classes.join(" "),
+                    innerHTML: `<h1 class='title'><a href='${link1}'>${title}<a></h1><div class='actions'></a><a class='readMore' href=''>Read More</label><a href=${link2} class='github'><img src='Assets/Icons/SocialMedia/github.svg'></a></div><style>.article${i}::before {background-image: url('${image}');}</style>`
+                }));
                 i++;
             }
 
-            ArticleWebComponent({ classes: ["other", "finished"], title: "About Me QR", link1: "https://nicolasblasquez.github.io/AboutMeQR/><img src='Assets/Icons/QR.svg'", link2: "https://github.com/NicolasBlasquez/AboutMeQR/tree/gh-pages", image: "Assets/Pictures/aboutMeQR.png" });
-            ArticleWebComponent({ classes: ["entertainment", "unfinished"], title: "PBT Launcher", link1: "https://nicolasblasquez.github.io/PBT-servers/PbtLauncher/", link2: "https://github.com/NicolasBlasquez/PBT-servers", image: "Assets/Pictures/pbtLauncher.png" });
-            ArticleWebComponent({ classes: ["entertainment", "finished"], title: "Boren't", link1: "https://nicolasblasquez.github.io/Boren-t", link2: "https://github.com/NicolasBlasquez/Boren-t", image: "Assets/Pictures/borent.png" });
+            ArticleWebComponent({
+                description: `<h1 id="about-me-qr">About Me QR</h1><blockquote><p><strong>Idea:</strong> 3D print a QR code which redirects the user to a website containing a link tree.</p><p><strong>URL:</strong> <a href="https://nicolasblasquez.github.io/AboutMeQR/">https://nicolasblasquez.github.io/AboutMeQR/</a></p></blockquote>`,
+                classes: ["other", "finished"],
+                title: "About Me QR",
+                link1: "https://nicolasblasquez.github.io/AboutMeQR",
+                link2: "https://github.com/NicolasBlasquez/AboutMeQR/tree/gh-pages",
+                image: "Assets/Pictures/aboutMeQR.png"
+            });
+            ArticleWebComponent({
+                description: `<h1 id="about-me-qr">About Me QR</h1><blockquote><p><strong>Idea:</strong> 3D print a QR code which redirects the user to a website containing a link tree.</p><p><strong>URL:</strong> <a href="https://nicolasblasquez.github.io/AboutMeQR/">https://nicolasblasquez.github.io/AboutMeQR/</a></p></blockquote>`,
+                classes: ["entertainment", "unfinished"],
+                title: "PBT Launcher",
+                link1: "https://nicolasblasquez.github.io/PBT-servers/PbtLauncher",
+                link2: "https://github.com/NicolasBlasquez/PBT-servers/",
+                image: "Assets/Pictures/pbtLauncher.png"
+            });
+            ArticleWebComponent({
+                description: `<h1 id="about-me-qr">About Me QR</h1><blockquote><p><strong>Idea:</strong> 3D print a QR code which redirects the user to a website containing a link tree.</p><p><strong>URL:</strong> <a href="https://nicolasblasquez.github.io/AboutMeQR/">https://nicolasblasquez.github.io/AboutMeQR/</a></p></blockquote>`,
+                classes: ["entertainment", "finished"],
+                title: "Boren't",
+                link1: "https://nicolasblasquez.github.io/Boren-t",
+                link2: "https://github.com/NicolasBlasquez/Boren-t",
+                image: "Assets/Pictures/borent.png"
+            });
 
             const SEARCH_BAR = document.querySelector(".searchBar");
             const ARTICLES = document.querySelectorAll(".proyectArticle");
@@ -735,8 +549,6 @@
                     var nameSimilarity = TEXTS[i].innerHTML.match(regex);
                     var classSimilarity;
 
-                    // (?=.*?\bcat\b)(?=.*?\bdog\b)(?=(.*?\bplay\b){2})^.*$/
-
                     let classRexexp = new RegExp(`.*?(\\b${activatedClasses.join("\\b)(.*?\\b")}\\b).*?`, "gi");
 
                     let match = ARTICLES[i].className.match(classRexexp);
@@ -755,10 +567,14 @@
 
             FILTER_BUTTON.addEventListener("input", () => {
                 FILTERS.forEach(e => { e.checked = false; });
-            })
+            });
 
         </script>
+    </div>
+    <footer>
+        <small>&copy; Nicolas Blasquez: Casi todos los derechos reservados</small>
     </footer>
+
 </body>
 
 </html>

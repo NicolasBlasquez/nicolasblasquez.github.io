@@ -1,0 +1,154 @@
+aside {
+    flex: 1;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 13.5rem;
+}
+
+aside>div {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border: solid var(--bright) 1px;
+    border-radius: 0.5rem;
+    background-color: var(--secondary);
+}
+
+.info>div:nth-child(1) {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-radius: 0.5rem 0.5rem 0 0;
+    gap: 0.4rem;
+
+    background-color: var(--ternary);
+    padding: 1.5rem;
+
+}
+
+.info>div:nth-child(1) div {
+    display: flex;
+    gap: 0.4rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile {
+    display: block;
+    width: 50%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    background-image: url("../../Pictures/profile.jpg");
+    background-size: cover;
+}
+
+.profile::after {
+    content: "";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 13%;
+    height: 13%;
+    box-shadow: var(--gold-primary) 0 0 0.3rem;
+    animation: blink 1s infinite;
+    border-radius: 2rem;
+    position: relative;
+    bottom: -78%;
+    right: -38%;
+    background-color: var(--gold-primary);
+    transition: ease-in-out 0.2s;
+    font-size: 75%;
+    text-wrap: nowrap;
+    color: black;
+    overflow: hidden;
+}
+
+.profile:hover::after {
+    --w: 70%;
+    animation: none;
+    right: calc(var(--w) * -1 / 2 - 32%);
+    content: "Working... 💼";
+    width: var(--w);
+    padding: 5%;
+}
+
+.info>div:nth-child(2) {
+    padding: 1.8rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-image: linear-gradient(to right, #0000 9%, var(--ternary) 10%, var(--ternary) 90%, #0000 91%) 1;
+
+}
+
+.info>div span {
+    flex: 1;
+    display: flex;
+    font-size: 0.8rem;
+    justify-content: space-between;
+}
+
+.profile + div h3 {
+    font-size: 1.35rem;
+    margin: 0 0 0.25rem 0;
+}
+
+.resume {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    transition: ease-in-out 0.2s;
+    background-color: var(--secondary);
+    border-radius: 0.5rem;
+    color: var(--font);
+
+}
+
+.resume h3 {
+    margin: 0;
+}
+
+.resume img {
+    display: block;
+    height: 1.4rem;
+    transition: ease-in-out 0.15s;
+    aspect-ratio: 1;
+}
+
+.resume:hover {
+    filter: brightness(1.2);
+}
+
+.resume:hover img {
+    transform: translateX(0.4rem);
+}
+
+.socialMedia {
+
+    margin-top: auto;
+    padding: 1.8rem 0;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 0.6rem;
+
+    background-color: var(--secondary);
+    border-radius: 0 0 0.5rem 0.5rem;
+
+}
+
+.socialMedia img {
+    width: 1.2rem;
+}
+
+.socialMedia img:hover {
+    filter: brightness(0.85);
+}
