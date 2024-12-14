@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="./Assets/Scripts/CSS/aside.css">
 
     <style>
+
+        .container {
+            min-height: 100lvh;
+        }
         main {
             flex: 4;
 
@@ -240,17 +244,19 @@
             padding: 0 1.15rem;
             border-radius: 0.5rem;
 
+            aspect-ratio: 1.618;
+
             display: flex;
             gap: 5rem;
             justify-content: space-between;
             flex-wrap: wrap;
         }
 
-        main article h1 {
+        .title {
             display: flex;
             align-items: center;
             flex: 1;
-            margin: 1.15rem 0 0 0;
+            margin: 0;
             font-size: 1.8rem;
         }
 
@@ -259,12 +265,11 @@
         }
 
         .actions {
-            margin-top: auto;
             width: 100%;
             padding: 1rem 0.4rem 1rem 0;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-end;
         }
 
         .readMore {
@@ -280,7 +285,7 @@
         }
 
         .actions a.github {
-            height: 1.5rem;
+            height: 1.8rem;
         }
 
         .actions img {
@@ -288,23 +293,10 @@
         }
 
         main:has(#display:checked) article {
-            gap: 1rem;
             align-items: center;
+            aspect-ratio: unset;
         }
-
-        main:has(#display:checked) article h1 {
-            margin: 1rem 0;
-        }
-
-        main:has(#display:checked) .actions {
-            margin: 0;
-            width: auto;
-        }
-
-        main:has(#display:checked) .readMore {
-            display: none;
-        }
-
+        
         main:has(#filters:checked) label[for="filters"] svg {
             fill: var(--font);
         }
@@ -327,6 +319,7 @@
 
             border-radius: 0.5rem;
             background-size: cover;
+            background-position: center;
             filter: brightness(0.8);
             opacity: 0.45;
         }
@@ -339,9 +332,7 @@
 
 <body>
 
-    <script src="Assets/Scripts/JS/links.js"></script>
-
-    <div>
+    <div class="container">
 
         <aside>
             <div>
@@ -492,34 +483,24 @@
             function ArticleWebComponent({ classes = ["other"], title = "Example", link1 = "", link2 = "", image, description = "<h1>This proyect has no description</h1>" }) {
                 ARTICLE_CONTAINER.append(Object.assign(document.createElement("article"), {
                     classList: `article${i} proyectArticle ` + classes.join(" "),
-                    innerHTML: `<h1 class='title'><a href='${link1}'>${title}<a></h1><div class='actions'></a><a class='readMore' href=''>Read More</label><a href=${link2} class='github'><img src='Assets/Icons/SocialMedia/github.svg'></a></div><style>.article${i}::before {background-image: url('${image}');}</style>`
+                    innerHTML: `
+                    <div class='actions'>
+                        <a href='${link1}'>
+                            <h1 class='title'>${title}</h1>
+                        </a>
+                        <a href=${link2} class='github'><img src='Assets/Icons/SocialMedia/github.svg'></a>
+                    </div>
+                    <style>.article${i}::before {background-image: url('${image}');}</style>`
                 }));
                 i++;
             }
 
             ArticleWebComponent({
-                description: `<h1 id="about-me-qr">About Me QR</h1><blockquote><p><strong>Idea:</strong> 3D print a QR code which redirects the user to a website containing a link tree.</p><p><strong>URL:</strong> <a href="https://nicolasblasquez.github.io/AboutMeQR/">https://nicolasblasquez.github.io/AboutMeQR/</a></p></blockquote>`,
-                classes: ["other", "finished"],
-                title: "About Me QR",
-                link1: "https://nicolasblasquez.github.io/AboutMeQR",
-                link2: "https://github.com/NicolasBlasquez/AboutMeQR/tree/gh-pages",
-                image: "Assets/Pictures/aboutMeQR.png"
-            });
-            ArticleWebComponent({
-                description: `<h1 id="about-me-qr">About Me QR</h1><blockquote><p><strong>Idea:</strong> 3D print a QR code which redirects the user to a website containing a link tree.</p><p><strong>URL:</strong> <a href="https://nicolasblasquez.github.io/AboutMeQR/">https://nicolasblasquez.github.io/AboutMeQR/</a></p></blockquote>`,
                 classes: ["entertainment", "unfinished"],
-                title: "PBT Launcher",
-                link1: "https://nicolasblasquez.github.io/PBT-servers/PbtLauncher",
-                link2: "https://github.com/NicolasBlasquez/PBT-servers/",
-                image: "Assets/Pictures/pbtLauncher.png"
-            });
-            ArticleWebComponent({
-                description: `<h1 id="about-me-qr">About Me QR</h1><blockquote><p><strong>Idea:</strong> 3D print a QR code which redirects the user to a website containing a link tree.</p><p><strong>URL:</strong> <a href="https://nicolasblasquez.github.io/AboutMeQR/">https://nicolasblasquez.github.io/AboutMeQR/</a></p></blockquote>`,
-                classes: ["entertainment", "finished"],
-                title: "Boren't",
-                link1: "https://nicolasblasquez.github.io/Boren-t",
-                link2: "https://github.com/NicolasBlasquez/Boren-t",
-                image: "Assets/Pictures/borent.png"
+                title: "Space Dog",
+                link1: "https://nicolasblasquez.github.io/SpaceDog/",
+                link2: "https://github.com/NicolasBlasquez/SpaceDog",
+                image: "Assets/Pictures/spaceDog.png"
             });
 
             const SEARCH_BAR = document.querySelector(".searchBar");
@@ -552,7 +533,6 @@
                     let classRexexp = new RegExp(`.*?(\\b${activatedClasses.join("\\b)(.*?\\b")}\\b).*?`, "gi");
 
                     let match = ARTICLES[i].className.match(classRexexp);
-                    console.log(match)
                     if (match) classSimilarity = true; else classSimilarity = false;
 
                     if (nameSimilarity && classSimilarity) ARTICLES[i].style.display = "flex";
