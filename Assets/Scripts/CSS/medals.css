@@ -27,13 +27,13 @@
     border: var(--bright) solid;
     border-radius: 1rem;
     cursor: pointer;
-    background-image: url("../../Icons/plus.svg");
+    background-image: url("../../icons/plus.svg");
     background-size: 60%;
     background-position: center;
 }
 
 .knowledge:has(#knowledgeInput:checked) .seeMore {
-    background-image: url("../../Icons/minus.svg");
+    background-image: url("../../icons/minus.svg");
 }
 
 .knowledge:has(#knowledgeInput:checked) .medal:nth-child(2) ~ .medal {
@@ -81,7 +81,7 @@
     content: "";
     aspect-ratio: 1;
     transform: scale(0);
-    background-image: url("../../Icons/Medals/sparkle.svg");
+    background-image: url("../../icons/Medals/sparkle.svg");
     animation: shine ease-in-out 0.6s forwards;
     animation-delay: 0.5s;
 }
@@ -122,7 +122,7 @@
 }
 
 .gold {
-    background-image: url("../../Icons/Medals/goldSquare.svg");
+    background-image: url("../../icons/Medals/goldSquare.svg");
 }
 
 .gold svg * {
@@ -130,7 +130,7 @@
 }
 
 .silver {
-    background-image: url("../../Icons/Medals/silverSquare.svg");
+    background-image: url("../../icons/Medals/silverSquare.svg");
 }
 
 .silver svg * {
@@ -138,7 +138,7 @@
 }
 
 .bronze {
-    background-image: url("../../Icons/Medals/bronzeSquare.svg");
+    background-image: url("../../icons/Medals/bronzeSquare.svg");
 }
 
 .bronze svg * {

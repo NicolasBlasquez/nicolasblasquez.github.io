@@ -1,5 +1,5 @@
 aside {
-    flex: 1;
+    flex: 2;
     gap: 1rem;
     display: flex;
     flex-direction: column;
@@ -43,7 +43,7 @@ aside>div {
     aspect-ratio: 1;
     border-radius: 50%;
     margin-bottom: 1rem;
-    background-image: url("../../Pictures/profile.jpg");
+    background-image: url("../../pictures/profile.jpg");
     background-size: cover;
 }
 

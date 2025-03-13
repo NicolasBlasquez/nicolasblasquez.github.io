@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./Assets/Icons/suitcase.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/icons/suitcase.svg" type="image/x-icon">
     <title>Nicolas Blasquez</title>
 
-    <link rel="stylesheet" href="./Assets/Scripts/CSS/golbalStyles.css">
-    <link rel="stylesheet" href="./Assets/Scripts/CSS/animations.css">
-    <link rel="stylesheet" href="./Assets/Scripts/CSS/medals.css">
-    <link rel="stylesheet" href="./Assets/Scripts/CSS/aside.css">
+    <link rel="stylesheet" href="./assets/scripts/CSS/golbalStyles.css">
+    <link rel="stylesheet" href="./assets/scripts/CSS/animations.css">
+    <link rel="stylesheet" href="./assets/scripts/CSS/medals.css">
+    <link rel="stylesheet" href="./assets/scripts/CSS/aside.css">
 
     <style>
 
@@ -18,7 +18,7 @@
             min-height: 100lvh;
         }
         main {
-            flex: 4;
+            flex: 6;
 
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
@@ -66,7 +66,7 @@
         }
 
         header>div::before {
-            background-image: url("Assets/Pictures/forest.jpeg");
+            background-image: url("assets/pictures/forest.jpeg");
             background-size: cover;
             background-position: center;
         }
@@ -364,23 +364,23 @@
                 </div>
                 <div class="socialMedia dotsBackground">
                     <a href="https://github.com/NicolasBlasquez">
-                        <img src="Assets/Icons/SocialMedia/github.svg">
+                        <img src="assets/icons/SocialMedia/github.svg">
                     </a>
                     <a href="https://stackoverflow.com/users/16148585/nick">
-                        <img src="Assets/Icons/SocialMedia/stackoverflow.svg">
+                        <img src="assets/icons/SocialMedia/stackoverflow.svg">
                     </a>
                     <a href="https://twitter.com/NicolasBla5quez">
-                        <img src="Assets/Icons/SocialMedia/twitter.svg">
+                        <img src="assets/icons/SocialMedia/twitter.svg">
                     </a>
                     <a href="https://discordapp.com/users/nickx3">
-                        <img src="Assets/Icons/SocialMedia/discord.svg">
+                        <img src="assets/icons/SocialMedia/discord.svg">
                     </a>
                 </div>
             </div>
             <div>
                 <a href="Resume/" class="resume">
                     <h3>View my resume</h3>
-                    <img src="Assets/Icons/arrow.svg">
+                    <img src="assets/icons/arrow.svg">
                 </a>
             </div>
         </aside>
@@ -488,7 +488,7 @@
                         <a href='${link1}'>
                             <h1 class='title'>${title}</h1>
                         </a>
-                        <a href=${link2} class='github'><img src='Assets/Icons/SocialMedia/github.svg'></a>
+                        <a href=${link2} class='github'><img src='assets/icons/SocialMedia/github.svg'></a>
                     </div>
                     <style>.article${i}::before {background-image: url('${image}');}</style>`
                 }));
@@ -500,7 +500,15 @@
                 title: "Space Dog",
                 link1: "https://nicolasblasquez.github.io/SpaceDog/",
                 link2: "https://github.com/NicolasBlasquez/SpaceDog",
-                image: "Assets/Pictures/spaceDog.png"
+                image: "assets/pictures/spaceDog.png"
+            });
+
+            ArticleWebComponent({
+                classes: ["other", "unfinished"],
+                title: "Scout Website",
+                link1: "https://nicolasblasquez.github.io/ScoutWebsite/",
+                link2: "https://github.com/NicolasBlasquez/ScoutWebsite",
+                image: "assets/pictures/scoutWebsite.png"
             });
 
             const SEARCH_BAR = document.querySelector(".searchBar");
