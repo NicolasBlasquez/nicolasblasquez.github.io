@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/icons/resume.svg" type="image/x-icon">
+    <title>Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap');
+
+        ::-webkit-scrollbar {
+            background-color: var(--primary);
+            width: 0.8vw;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--ternary);
+            border-radius: 1rem;
+        }
+
+        * {
+            text-decoration: none;
+            list-style: none;
+            outline: none;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .inline-icon {
+            aspect-ratio: 1;
+            height: 100%;
+        }
+
+        ul {
+            padding-left: 0;
+        }
+
+        li {
+            line-height: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        a {
+            color: var(--font);
+        }
+
+        a.link::after {
+            content: "";
+            display: inline-block;
+            height: 0.8rem;
+            aspect-ratio: 1;
+            background-image: url("assets/icons/link.svg");
+            background-size: 100%;
+            margin-left: 0.3rem;
+        }
+
+        :root {
+
+            --border-radius: 0.5rem;
+            --primary: #ffffff;
+            --secondary: #f0f0f0;
+            --ternary: #dadada;
+            --bright: #b6b6b6;
+            --font: #3b3b3b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--primary);
+            font-family: Roboto;
+            color: var(--font);
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        body {
+            padding: 2.5rem 1rem;
+            max-width: 65rem;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            gap: 1rem;
+        }
+
+        aside {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+	    margin-bottom: 2rem;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+min-width: 16rem
+        }
+
+        .profileImg {
+            background-size: 105%;
+            background-image: url("../assets/pictures/profile.jpg");
+            background-position: center;
+            border-radius: 50%;
+            width: 80%;
+            aspect-ratio: 1;
+            transition: ease-in-out 0.2s;
+        }
+
+        .profileImg:hover {
+            background-size: 100%;
+        }
+
+        .info {
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .info div {
+            display: flex;
+            gap: 0.25rem;
+            justify-content: center;
+        }
+
+        .contact {
+            display: grid;
+            width: 80%;
+            grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+            gap: 1rem;
+            padding: 0;
+        }
+
+        .contact a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border: var(--ternary) solid 1px;
+            border-radius: var(--border-radius);
+
+            aspect-ratio: 16/9;
+
+            background-color: var(--secondary);
+            background-image: radial-gradient(circle, var(--ternary) 1px, rgba(0, 0, 0, 0) 1px);
+            background-size: 1rem 1rem;
+        }
+
+        .contact img {
+            height: 55%;
+        }
+
+        .languajes {
+            width: 80%;
+            display: flex;
+            border: var(--ternary) solid 1px;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            background-color: var(--secondary);
+
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .icon {
+            border-radius: 0.3rem;
+            height: 1rem;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            flex: 3;
+            padding: 0 1rem;
+            gap: 1.8rem;
+min-width: 22rem;
+        }
+
+        main>div {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+        }
+        h2,
+        h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        h3 {
+            opacity: 0.5;
+        }
+
+        h1+h3 {
+            margin-top: 0.2rem;
+        }
+
+        .row {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .files {
+            padding: 0.5rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .files>a {
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+
+            width: 100%;
+            gap: 1rem;
+
+            border: var(--ternary) solid 1px;
+            border-radius: var(--border-radius);
+        }
+
+        .files>a img {
+            height: 100%;
+        }
+
+        @media(prefers-color-scheme: dark) {
+            :root {
+                --primary: #1E1E28;
+                --secondary: #20202A;
+                --ternary: #2B2B35;
+                --bright: #3c3c51;
+                --font: #C9CAD0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside>
+        <div class="profile">
+            <img class="profileImg" alt="" src="../assets/pictures/profile.jpg">
+            <div class="info">
+                <div>
+                    <b>Nationality:</b><span>Argentinian</span>
+                </div>
+                <div>
+                    <b>Date of birth:</b><span>6/11/2006</span>
+                </div>
+            </div>
+            <div class="contact">
+                <a href="https://github.com/NicolasBlasquez" class="social">
+                    <img src="assets/icons/github.svg">
+                </a>
+                <a href="tel:+54352515483334" class="social">
+                    <img src="assets/icons/phone.svg">
+                </a>
+                <a href="https://mail.google.com/mail/u/?authuser=blasqueznicolas2006@gmail.com" class="social">
+                    <img src="assets/icons/email.svg">
+                </a>
+                <a href="https://nicolasblasquez.github.io" class="social">
+                    <img src="assets/icons/globe.svg">
+                </a>
+            </div>
+            <div class="languajes">
+                <div class="row">
+                    <img src="assets/icons/es.svg" class="icon">
+                    <h4>Spanish:</h4><span>Native speaker</span>
+                </div>
+                <div class="row">
+                    <img src="assets/icons/uk.svg" class="icon">
+                    <h4>English:</h4><span>B2 level</span>
+                </div>
+            </div>
+    </aside>
+
+    <main>
+        <div>
+            <div>
+                <h1>Nicolas Blasquez</h1>
+                <h3>Front-End Developer</h3>
+            </div>
+            <p class="description">I'm proactive and I know how to manage responsibilities and use my time efficiently.
+                I'm currently
+                specialising in Front-End development while training my Back-End skills. My objective is to be a
+                Full-Stack
+                developer. I like to keep everything simple and clear. </p>
+
+        </div>
+        <section>
+            <div class="row">
+                <h2>Skills</h2>
+            </div>
+            <ul>
+                <li><img src="./assets/icons/team.svg" class="inline-icon" alt=""> Teamwork</li>
+                <li><img src="./assets/icons/chat.svg" class="inline-icon" alt=""> Effective communication</li>
+                <li><img src="./assets/icons/time.svg" class="inline-icon" alt=""> Time management</li>
+                <li><img src="./assets/icons/megaphone.svg" class="inline-icon" alt=""> Proven leadership</li>
+                <li><img src="./assets/icons/motivation.svg" class="inline-icon" alt=""> Hability to motivate others
+                </li>
+            </ul>
+        </section>
+        <section>
+            <div class="row">
+                <h2>High School</h2>
+                <h3>[2019 - 2025]</h3>
+            </div>
+            <a href="https://pioleon.com.ar/" class="link">Pio Leon Educational Association</a>
+        </section>
+        <section>
+            <h2>Certificates:</h2>
+            <div class="files">
+                <a href="./assets/documents/StatementOfResult.pdf">
+                    <img src="assets/icons/file-pdf.svg" alt="">
+                    <div>
+                        <h4>First for Schools Digital</h4>
+                        <p>Cambridge English Assessment</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+
+</html>
